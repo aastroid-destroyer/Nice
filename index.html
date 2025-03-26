@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Heartfelt Apology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-500px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .sorry-container {
+            position: relative;
+            margin: 50px auto;
+            transform-style: preserve-3d;
+            animation: floatUp 2s ease-out forwards;
+        }
+
+        .sorry-text {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #ff4757;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            transform: translateZ(50px);
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            display: inline-block;
+        }
+
+        .sorry-text span {
+            display: inline-block;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: bounce 1.5s ease infinite alternate;
+        }
+
+        .sorry-text span:nth-child(1) { animation-delay: 0.1s; color: #ff6b81; }
+        .sorry-text span:nth-child(2) { animation-delay: 0.2s; color: #ff7f50; }
+        .sorry-text span:nth-child(3) { animation-delay: 0.3s; color: #ff6348; }
+        .sorry-text span:nth-child(4) { animation-delay: 0.4s; color: #ff4757; }
+        .sorry-text span:nth-child(5) { animation-delay: 0.5s; color: #ff6b81; }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100px) rotateX(-90deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) rotateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0) rotateZ(0);
+            }
+            50% {
+                transform: translateY(-30px) rotateZ(10deg);
+            }
+        }
+
+        .message {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeIn 1.5s 1s ease-out forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff4757;
+            margin-top: 20px;
+        }
+
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .flower {
+            position: absolute;
+            opacity: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            transform: scale(0.9);
+            opacity: 0;
+            animation: pulse 2s 2s infinite, appear 1s 1.5s forwards;
+        }
+
+        button:hover {
+            background: #ff6b81;
+            transform: scale(1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 71, 87, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+        }
+
+        @keyframes appear {
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sorry-text {
+                font-size: 5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .message {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flowers" id="flowers"></div>
+    
+    <div class="container">
+        <div class="sorry-container">
+            <div class="sorry-text">
+                <span>S</span>
+                <span>O</span>
+                <span>R</span>
+                <span>R</span>
+                <span>Y</span>
+            </div>
+        </div>
+        
+        <div class="message">
+            <h1>My Subu,</h1>
+            <p>I never meant to hurt you.</p>
+            <p>You mean the world to me, and seeing you upset breaks my heart. I promise ar jibone apu dak dibo na</p>
+            <p>Please forgive me. I can't imagine my life without your smile brightening my days.</p>
+            <div class="signature">Your Moon</div>
+            <button id="forgiveBtn">Will You Forgive Me?</button>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = Math.random() * 100 + 'vh';
+                    heart.style.animationDuration = 3 + Math.random() * 7 + 's';
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart after animation completes
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 10000);
+                }, i * 300);
+            }
+        }
+
+        // Create falling flowers
+        function createFlowers() {
+            const flowersContainer = document.getElementById('flowers');
+            const flowerEmojis = ['🌸', '🌹', '💐', '🌺', '🌷', '🥀', '🌻', '🌼'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const flower = document.createElement('div');
+                    flower.classList.add('flower');
+                    flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                    flower.style.left = Math.random() * 100 + 'vw';
+                    flower.style.fontSize = (10 + Math.random() * 20) + 'px';
+                    flower.style.animationDuration = 5 + Math.random() * 10 + 's';
+                    flower.style.animationDelay = Math.random() * 5 + 's';
+                    flowersContainer.appendChild(flower);
+                }, i * 300);
+            }
+        }
+
+        // Forgive button interaction
+        document.getElementById('forgiveBtn').addEventListener('click', function() {
+            this.textContent = 'Thank you, Subuuuuuu! ❤️';
+            this.style.backgroundColor = '#4CAF50';
+            
+            // Create heart explosion
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.style.left = '50%';
+                    heart.style.top = '80%';
+                    heart.style.animationDuration = 1 + Math.random() * 3 + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 100);
+            }
+        });
+
+        // Initialize animations
+        window.onload = function() {
+            createHearts();
+            createFlowers();
+            
+            // Keep creating hearts periodically
+            setInterval(createHearts, 5000);
+        };
+    </script>
+</body>
+</html>
